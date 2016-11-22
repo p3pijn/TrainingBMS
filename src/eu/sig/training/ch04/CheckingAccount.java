@@ -10,7 +10,7 @@ public class CheckingAccount {
 
 		checkWithdrawalLimit(amount);
 		// 2. Assuming result is 9-digit bank account number, validate 11-test:
-        int sum = getAccountNumberSum(counterAccount);
+        int sum = Accounts.getAccountNumberSum(counterAccount);
 		if (sum % 11 == 0) {
 			return getTransfer(counterAccount, amount);
 		} else {
@@ -18,13 +18,7 @@ public class CheckingAccount {
 		}
 	}
 
-    private int getAccountNumberSum(String counterAccount) {
-        int sum = 0;
-        for (int i = 0; i < counterAccount.length(); i++) {
-            sum = sum + (9 - i) * Character.getNumericValue(counterAccount.charAt(i));
-        }
-        return sum;
-    }
+
 
     // 3. Look up counter account and make transfer object:
 	private Transfer getTransfer(String counterAccount, Money amount) {
