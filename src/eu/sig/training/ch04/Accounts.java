@@ -14,5 +14,13 @@ public class Accounts {
         }
         return sum % 11 == 0;
     }
+
+    public static int getAccountNumberSum(String counterAccount) {
+        int sum = 0;
+        for (int i = 0; i < counterAccount.length(); i++) {
+            sum = sum + (9 - i) * Character.getNumericValue(counterAccount.charAt(i));
+        }
+        return sum;
+    }
     // end::isValid[]
 }

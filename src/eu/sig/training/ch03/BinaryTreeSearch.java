@@ -15,20 +15,28 @@ public class BinaryTreeSearch {
             return depth;
         } else {
             if (nodeValue < node.getValue()) {
-                BinaryTreeNode<Integer> left = node.getLeft();
-                if (left == null) {
-                    throw new TreeException("Value not found in tree!");
-                } else {
-                    return 1 + calculateDepth(left, nodeValue);
-                }
+                return calculateLeftNode(node, nodeValue);
             } else {
-                BinaryTreeNode<Integer> right = node.getRight();
-                if (right == null) {
-                    throw new TreeException("Value not found in tree!");
-                } else {
-                    return 1 + calculateDepth(right, nodeValue);
-                }
+                return calculateRightNode(node, nodeValue);
             }
+        }
+    }
+
+    private static int calculateRightNode(BinaryTreeNode<Integer> node, int nodeValue) throws TreeException {
+        BinaryTreeNode<Integer> right = node.getRight();
+        if (right == null) {
+            throw new TreeException("Value not found in tree!");
+        } else {
+            return 1 + calculateDepth(right, nodeValue);
+        }
+    }
+
+    private static int calculateLeftNode(BinaryTreeNode<Integer> node, int nodeValue) throws TreeException {
+        BinaryTreeNode<Integer> left = node.getLeft();
+        if (left == null) {
+            throw new TreeException("Value not found in tree!");
+        } else {
+            return 1 + calculateDepth(left, nodeValue);
         }
     }
     // end::calculateDepth[]
